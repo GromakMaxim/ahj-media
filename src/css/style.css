@@ -1,0 +1,74 @@
+@import url("./global.css");
+@import url("./fonts.css");
+
+.feed-container {
+    width: 700px;
+    height: 1000px;
+    border: 1px solid black;
+    margin: auto;
+}
+
+.feed-posts-container {
+    border: 1px solid black;
+
+}
+
+.feed-input-container {
+}
+
+.feed-post {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.feed-post:first-child{
+    margin-top: 20px;
+}
+
+.feed-post-first_line {
+    display: flex;
+    flex-direction: row;
+}
+
+.feed-post-content {
+    width: 70%;
+    padding: 10px;
+    word-wrap: break-word;
+
+}
+
+.feed-post-second_line {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.feed-post-coordinate {
+    padding-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.feed-post-date {
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.feed_post-watched-pic {
+    width: 20px;
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("../pics/viewed.png");
+}
