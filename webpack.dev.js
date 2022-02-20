@@ -4,6 +4,12 @@ const {merge} = require('webpack-merge');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
+    output: {
+        //local run
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
+    },
+
     // Set the mode to development or production
     mode: 'development',
     // Control how source maps are generated
