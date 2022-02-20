@@ -5,6 +5,7 @@
     width: 700px;
     border: 1px solid black;
     margin: auto;
+    position: relative;
 }
 
 .feed-posts-container {
@@ -86,4 +87,71 @@
 .feed-input {
     width: 90%;
     padding: 10px;
+}
+
+.geo-error-modal {
+    width: 500px;
+    background-color: white;
+    border: 3px solid black;
+    padding: 15px;
+    position: absolute;
+    top: 50px;
+    right: 110px;
+}
+
+.l1, .l2 {
+    margin-bottom: 15px;
+}
+
+.geo-error-input-wrap {
+    display: flex;
+    margin: auto;
+}
+
+.geo-error-input {
+    height: 30px;
+    padding: 3px;
+    width: 220px;
+}
+
+.geo-error-input:focus{
+    border: 3px solid black;
+}
+
+.geo-error-controls-wrapper, .geo-error-controls {
+    display: flex;
+    flex-direction: row;
+}
+
+.geo-error-ok-btn, .geo-error-cancel-btn {
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.geo-error-ok-btn {
+    margin-right: 10px;
+    margin-left: 10px;
+
+}
+
+.geo-error-ok-btn, .geo-error-cancel-btn {
+    display: flex;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.geo-error-ok-btn:hover, .geo-error-cancel-btn:hover{
+    border: 3px solid black;
+    font-weight: bolder;
+}
+
+p {
+    margin: auto;
+    vertical-align: center;
+}
+
+.geo-error-modal.hidden{
+    display: none;
 }
