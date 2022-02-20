@@ -13,15 +13,14 @@ export default class InputHandler {
         textArea.addEventListener('keypress', async (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
-                const geoCheckResult = InputHandler.checkGeoData(GeoService.geo);
-                if (geoCheckResult) {
+                try {
+                    InputHandler.checkGeoData(GeoService.geo);
                     let post = await this.buildTxtPost(textArea.value);
                     postContainer.appendChild(post);
-                } else {
+                    textArea.value = '';
+                } catch (e) {
                     modalWindow.classList.remove('hidden');
                 }
-
-                textArea.value = '';
             }
         });
 
@@ -29,12 +28,12 @@ export default class InputHandler {
         geoTextArea.addEventListener('keypress', async (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
-                const geoCheckResult = InputHandler.checkGeoData(geoTextArea.value.trim());
-                if (geoCheckResult) {
+                try{
+                    InputHandler.checkGeoData(geoTextArea.value.trim());
                     GeoService.geo = geoTextArea.value.trim();
                     geoTextArea.value = '';
                     modalWindow.classList.add('hidden');
-                } else {
+                } catch (e) {
                     GeoService.geo = null;
                     geoTextArea.value = '';
                 }
@@ -85,7 +84,7 @@ export default class InputHandler {
             throw new Error('illegal geodata:' + geoRaw);
         }
 
-        if (!geoRaw.includes("[") || !geoRaw.includes("]") || !geoRaw.includes(',') || !geoRaw.includes(' ')){
+        if (!geoRaw.includes("[") || !geoRaw.includes("]") || !geoRaw.includes(',') || !geoRaw.includes(' ')) {
             throw new Error('wrong input geodata. missed symbol.');
         }
 
