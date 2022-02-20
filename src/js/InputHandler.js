@@ -102,11 +102,14 @@ export default class InputHandler {
             throw new Error('illegal geodata:' + geoRaw);
         }
 
-        if (!geoRaw.includes("[") || !geoRaw.includes("]") || !geoRaw.includes(',') || !geoRaw.includes(' ') || !geoRaw.includes('.')) {
+        if (!geoRaw.includes("[") || !geoRaw.includes("]") || !geoRaw.includes(',') || !geoRaw.includes(' ')) {
             throw new Error('wrong input geodata. missed symbol.');
         }
 
         if (geoRaw.match(/[a-zA-Z]/)) throw new Error('wrong input geodata. letters not allowed.');
+        if (!geoRaw.match(/[0-9]/)) throw new Error('wrong input geodata. digits not found.');
+
+        if (geoRaw.split(".").length - 1 !== 2 && geoRaw.split(".").length - 1 !== 1 && geoRaw.split(".").length - 1 !== 0) throw new Error('wrong input geodata. more than 2 dots.');
 
         return true;
     }
