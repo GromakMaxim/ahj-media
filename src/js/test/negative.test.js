@@ -17,4 +17,10 @@ test('given: wrong input. expected: error', () => {
     expect(()=>InputHandler.checkGeoData('[51.50851,−0.12572]')).toThrow('wrong input geodata. missed symbol.');
 });
 
+test('given: wrong input. expected: error', () => {
+    expect(()=>InputHandler.checkGeoData('[51.5085q, −0.1257p]')).toThrow('wrong input geodata. letters not allowed.');
+});
 
+test('given: wrong input. expected: error', () => {
+    expect(()=>InputHandler.checkGeoData('[51150851, −0112571]')).toThrow('wrong input geodata. missed symbol.');
+});

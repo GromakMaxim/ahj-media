@@ -13,12 +13,13 @@ export default class InputHandler {
         textArea.addEventListener('keypress', async (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
+                console.log(GeoService.geo)
                 try {
-                    InputHandler.checkGeoData(GeoService.geo);
+                    await InputHandler.checkGeoData(GeoService.geo);
                     let post = await this.buildTxtPost(textArea.value);
                     postContainer.appendChild(post);
                     textArea.value = '';
-                    postContainer.scroll(0, 1000);
+                    postContainer.scroll(0, -1000);
                 } catch (e) {
                     modalWindow.classList.remove('hidden');
                 }
@@ -96,14 +97,16 @@ export default class InputHandler {
         return feedPost;
     }
 
-    static checkGeoData(geoRaw) {
+    static async checkGeoData(geoRaw) {
         if (geoRaw === null || geoRaw === undefined || geoRaw === '') {
             throw new Error('illegal geodata:' + geoRaw);
         }
 
-        if (!geoRaw.includes("[") || !geoRaw.includes("]") || !geoRaw.includes(',') || !geoRaw.includes(' ')) {
+        if (!geoRaw.includes("[") || !geoRaw.includes("]") || !geoRaw.includes(',') || !geoRaw.includes(' ') || !geoRaw.includes('.')) {
             throw new Error('wrong input geodata. missed symbol.');
         }
+
+        if (geoRaw.match(/[a-zA-Z]/)) throw new Error('wrong input geodata. letters not allowed.');
 
         return true;
     }
