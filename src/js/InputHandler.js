@@ -18,6 +18,7 @@ export default class InputHandler {
                     let post = await this.buildTxtPost(textArea.value);
                     postContainer.appendChild(post);
                     textArea.value = '';
+                    postContainer.scroll(0, 1000);
                 } catch (e) {
                     modalWindow.classList.remove('hidden');
                 }
@@ -28,17 +29,33 @@ export default class InputHandler {
         geoTextArea.addEventListener('keypress', async (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
-                try{
-                    InputHandler.checkGeoData(geoTextArea.value.trim());
-                    GeoService.geo = geoTextArea.value.trim();
-                    geoTextArea.value = '';
-                    modalWindow.classList.add('hidden');
-                } catch (e) {
-                    GeoService.geo = null;
-                    geoTextArea.value = '';
-                }
+                await validateInput();
             }
         })
+
+        const modalCancelBtn = document.getElementsByClassName('geo-error-cancel-btn')[0];
+        modalCancelBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            modalWindow.classList.add('hidden');
+        });
+
+        const modalOkBtn = document.getElementsByClassName('geo-error-ok-btn')[0];
+        modalOkBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
+            await validateInput();
+        });
+
+        async function validateInput() {
+            try {
+                InputHandler.checkGeoData(geoTextArea.value.trim());
+                GeoService.geo = geoTextArea.value.trim();
+                geoTextArea.value = '';
+                modalWindow.classList.add('hidden');
+            } catch (e) {
+                GeoService.geo = null;
+                geoTextArea.value = '';
+            }
+        }
     }
 
 

@@ -10,6 +10,8 @@
 
 .feed-posts-container {
     display: flex;
+    max-height: 800px;
+    overflow-y: scroll;
     flex-direction: column-reverse;
     border: 1px solid black;
 
@@ -133,7 +135,6 @@
 .geo-error-ok-btn {
     margin-right: 10px;
     margin-left: 10px;
-
 }
 
 .geo-error-ok-btn, .geo-error-cancel-btn {
@@ -145,6 +146,7 @@
 .geo-error-ok-btn:hover, .geo-error-cancel-btn:hover{
     border: 3px solid black;
     font-weight: bolder;
+    cursor:pointer;
 }
 
 p {
@@ -155,3 +157,4 @@ p {
 .geo-error-modal.hidden{
     display: none;
 }
+
