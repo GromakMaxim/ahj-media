@@ -1,23 +1,34 @@
+import Printer from "./Printer";
+
 export default class GeoService {
-    static geo = null;
-    constructor() {
-        this.init();
+
+    constructor(inputHandler) {
+        this.inputHandler = inputHandler;
+
     }
 
-    async init() {
+    checkGeoData() {
+        let printer = new Printer(this.inputHandler);
+
         if ("geolocation" in navigator) {
-            navigator.geolocation.watchPosition(
+            navigator.geolocation.getCurrentPosition(
                 function (coords) {
-                    GeoService.geo = '[' + coords.coords.latitude + ', ' + coords.coords.longitude + ']';
-                    console.log(GeoService.geo)
+                    let result = '[' + coords.coords.latitude + ', ' + coords.coords.longitude + ']';
+                    printer.print(result);
                 },
                 function (err) {
-                },
-
+                    printer.showModal();
+                }, {
+                    timeout: 5000,
+                    maximumAge: 10000,
+                    enableHighAccuracy: true
+                }
             );
         } else {
-
+            return null;
         }
+
+
     }
 
 

@@ -116,7 +116,7 @@
     width: 220px;
 }
 
-.geo-error-input:focus{
+.geo-error-input:focus {
     border: 3px solid black;
 }
 
@@ -143,10 +143,10 @@
     text-align: center;
 }
 
-.geo-error-ok-btn:hover, .geo-error-cancel-btn:hover{
+.geo-error-ok-btn:hover, .geo-error-cancel-btn:hover {
     border: 3px solid black;
     font-weight: bolder;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 p {
@@ -154,7 +154,7 @@ p {
     vertical-align: center;
 }
 
-.geo-error-modal.hidden{
+.geo-error-modal.hidden {
     display: none;
 }
 

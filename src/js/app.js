@@ -1,5 +1,3 @@
-import InputHandler from "./InputHandler";
-import GeoService from "./GeoService";
+import UIInteractionService from "./UIInteractionService";
 
-new InputHandler();
-new GeoService();
+new UIInteractionService();
